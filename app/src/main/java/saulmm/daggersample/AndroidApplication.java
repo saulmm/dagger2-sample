@@ -22,4 +22,9 @@ public class AndroidApplication extends Application {
 
         applicationComponent.inject(this);
     }
+
+    public ApplicationComponent getApplicationComponent() {
+
+        return applicationComponent;
+    }
 }

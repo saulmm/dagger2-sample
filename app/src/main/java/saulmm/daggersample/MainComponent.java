@@ -1,9 +1,16 @@
 package saulmm.daggersample;
 
+import android.app.Activity;
+
 import dagger.Component;
 
-@Component(modules = MainModule.class)
+
+@PerActivity
+@Component(dependencies = ApplicationComponent.class, modules = MainModule.class)
 public interface MainComponent {
 
     void inject(MainActivity homeActivity);
+
+    Activity activity(); // Expose the activity to sub-graphs.
+
 }
