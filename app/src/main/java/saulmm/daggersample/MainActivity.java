@@ -1,6 +1,7 @@
 package saulmm.daggersample;
 
 import android.app.Activity;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import javax.inject.Inject;
@@ -17,11 +18,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainComponent = DaggerMainComponent.builder().mainModule(new MainModule(this))
+        mainComponent = DaggerMainComponent.builder()
+            .mainModule(new MainModule(this))
             .build();
 
         mainComponent.inject(this);
 
         mainPresenter.onCreate();
+
+        LocationManager locationManager = ((AndroidApplication) getApplication()).locationManager;
+        locationManager.getAllProviders();
     }
 }
